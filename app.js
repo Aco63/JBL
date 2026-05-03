@@ -68,8 +68,41 @@
       const scrollable = heroSection.offsetHeight - window.innerHeight;
       const progress = Math.min(Math.max(-rect.top / scrollable, 0), 1);
       const frameIndex = Math.min(Math.floor(progress * FRAME_COUNT), FRAME_COUNT - 1);
+
       if (frameIndex !== currentFrame) {
         drawFrame(frameIndex);
+
+        // --- English Comment: Cache UI elements for the scroll animation features ---
+        const scrollGuide = document.getElementById('scroll-guide');
+        const dynamicText = document.getElementById('dynamic-text');
+
+        // --- English Comment: Update scroll guide visibility based on interaction ---
+        // Hide the guide ("Povuci da istražiš") after user scrolls past the 5th frame
+        if (frameIndex > 5) {
+          scrollGuide.style.opacity = '0';
+        } else {
+          scrollGuide.style.opacity = '1';
+        }
+
+        // --- English Comment: Manage dynamic text transitions based on specific frames ---
+        // Display different messages at specific points in the 84-frame animation
+        if (frameIndex > 10 && frameIndex < 30) {
+          dynamicText.innerText = "Kristalan Zvuk";
+          dynamicText.style.opacity = "1";
+          dynamicText.style.transform = "translateX(0)";
+        } else if (frameIndex > 40 && frameIndex < 60) {
+          dynamicText.innerText = "Moćan Bass";
+          dynamicText.style.opacity = "1";
+          dynamicText.style.transform = "translateX(0)";
+        } else if (frameIndex > 70 && frameIndex < 83) {
+          dynamicText.innerText = "Spreman za party?";
+          dynamicText.style.opacity = "1";
+          dynamicText.style.transform = "translateX(0)";
+        } else {
+          // --- English Comment: Hide text when outside frame ranges ---
+          dynamicText.style.opacity = "0";
+          dynamicText.style.transform = "translateX(-50px)";
+        }
       }
       ticking = false;
     });
