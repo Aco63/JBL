@@ -1,12 +1,15 @@
 <!DOCTYPE html>
 <html lang="hr">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>JBL Rent Zagreb — Najam JBL PartyBox 710 zvučnika</title>
-  <meta name="description" content="Iznajmite JBL PartyBox 710 (800W) u Zagrebu. Besplatna dostava, bez depozita. Samo 60€ po danu. Rezervirajte odmah!">
+  <meta name="description"
+    content="Iznajmite JBL PartyBox 710 (800W) u Zagrebu. Besplatna dostava, bez depozita. Samo 60€ po danu. Rezervirajte odmah!">
   <link rel="stylesheet" href="index.css">
 </head>
+
 <body>
 
   <!-- ======= HEADER ======= -->
@@ -14,7 +17,13 @@
     <a href="#" class="header__logo">JBL <span>Rent</span></a>
     <button class="header__cta" id="headerCta" aria-label="Rezerviraj">
       <span class="header__cta-text">Rezerviraj</span>
-      <svg class="header__cta-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+      <svg class="header__cta-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+        stroke-linecap="round" stroke-linejoin="round">
+        <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
+        <line x1="16" y1="2" x2="16" y2="6" />
+        <line x1="8" y1="2" x2="8" y2="6" />
+        <line x1="3" y1="10" x2="21" y2="10" />
+      </svg>
     </button>
   </header>
 
@@ -23,6 +32,10 @@
     <div class="hero__canvas-wrap">
       <canvas class="hero__canvas" id="heroCanvas"></canvas>
     </div>
+    <div id="scroll-guide" class="scroll-guide">Povuci da istražiš ↓</div>
+    <div id="feature-text-container" class="feature-text">
+      <h2 id="dynamic-text"></h2>
+    </div>
   </section>
 
   <!-- ======= PRICING ======= -->
@@ -30,26 +43,39 @@
     <div class="reveal">
       <div class="section__badge">⚡ Premium zvuk</div>
       <h2 class="section__title">JBL PartyBox 710</h2>
-      <p class="section__subtitle">Snaga od 800W, masivan bas, dinamičan light show i Bluetooth povezivanje — sve što vam treba za nezaboravan party.</p>
+      <p class="section__subtitle">Snaga od 800W, masivan bas, dinamičan light show i Bluetooth povezivanje — sve što
+        vam treba za nezaboravan party.</p>
     </div>
     <div class="pricing__card reveal">
       <h3 class="pricing__product-name">JBL PartyBox 710</h3>
       <p class="pricing__product-sub">800W RMS · Premium Party zvučnik</p>
       <ul class="pricing__features">
         <li>
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+            stroke-linejoin="round">
+            <polyline points="20 6 9 17 4 12" />
+          </svg>
           Bluetooth povezivanje (mobitel, tablet, laptop)
         </li>
         <li>
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+            stroke-linejoin="round">
+            <polyline points="20 6 9 17 4 12" />
+          </svg>
           Dinamičan Light Show s LED efektima
         </li>
         <li>
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+            stroke-linejoin="round">
+            <polyline points="20 6 9 17 4 12" />
+          </svg>
           Masivan bas za svaki prostor
         </li>
         <li>
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+            stroke-linejoin="round">
+            <polyline points="20 6 9 17 4 12" />
+          </svg>
           Transportni kotačići za lako prenošenje
         </li>
       </ul>
@@ -72,70 +98,108 @@
       <div class="faq__item" id="faq-1">
         <button class="faq__question" aria-expanded="false" aria-controls="faq-a-1">
           <span>Kako funkcionira dostava zvučnika?</span>
-          <span class="faq__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+          <span class="faq__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <line x1="12" y1="5" x2="12" y2="19" />
+              <line x1="5" y1="12" x2="19" y2="12" />
+            </svg></span>
         </button>
         <div class="faq__answer" id="faq-a-1" role="region">
-          <div class="faq__answer-inner">Nudimo besplatnu dostavu na vašu adresu unutar cijelog grada Zagreba. Za lokacije izvan Zagreba, dostava se dodatno naplaćuje ovisno o udaljenosti. Naravno, zvučnik možete podići i osobno na našoj adresi uz prethodni dogovor.</div>
+          <div class="faq__answer-inner">Nudimo besplatnu dostavu na vašu adresu unutar cijelog grada Zagreba. Za
+            lokacije izvan Zagreba, dostava se dodatno naplaćuje ovisno o udaljenosti. Naravno, zvučnik možete podići i
+            osobno na našoj adresi uz prethodni dogovor.</div>
         </div>
       </div>
 
       <div class="faq__item" id="faq-2">
         <button class="faq__question" aria-expanded="false" aria-controls="faq-a-2">
           <span>Moram li ostaviti polog (depozit)?</span>
-          <span class="faq__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+          <span class="faq__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <line x1="12" y1="5" x2="12" y2="19" />
+              <line x1="5" y1="12" x2="19" y2="12" />
+            </svg></span>
         </button>
         <div class="faq__answer" id="faq-a-2" role="region">
-          <div class="faq__answer-inner">Ne, financijski polog nije potreban. Prilikom preuzimanja zvučnika dovoljno je priložiti osobnu iskaznicu na uvid radi fotografiranja i evidencije.</div>
+          <div class="faq__answer-inner">Ne, financijski polog nije potreban. Prilikom preuzimanja zvučnika dovoljno je
+            priložiti osobnu iskaznicu na uvid radi fotografiranja i evidencije.</div>
         </div>
       </div>
 
       <div class="faq__item" id="faq-3">
         <button class="faq__question" aria-expanded="false" aria-controls="faq-a-3">
           <span>Radi li JBL PartyBox 710 na bateriju?</span>
-          <span class="faq__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+          <span class="faq__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <line x1="12" y1="5" x2="12" y2="19" />
+              <line x1="5" y1="12" x2="19" y2="12" />
+            </svg></span>
         </button>
         <div class="faq__answer" id="faq-a-3" role="region">
-          <div class="faq__answer-inner">Ne, ovaj model nema ugrađenu bateriju. Zbog svoje velike snage (800W), JBL 710 mora biti stalno spojen na strujnu utičnicu kako bi radio.</div>
+          <div class="faq__answer-inner">Ne, ovaj model nema ugrađenu bateriju. Zbog svoje velike snage (800W), JBL 710
+            mora biti stalno spojen na strujnu utičnicu kako bi radio.</div>
         </div>
       </div>
 
       <div class="faq__item" id="faq-4">
         <button class="faq__question" aria-expanded="false" aria-controls="faq-a-4">
           <span>Kako se mogu povezati sa zvučnikom?</span>
-          <span class="faq__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+          <span class="faq__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <line x1="12" y1="5" x2="12" y2="19" />
+              <line x1="5" y1="12" x2="19" y2="12" />
+            </svg></span>
         </button>
         <div class="faq__answer" id="faq-a-4" role="region">
-          <div class="faq__answer-inner">Povezivanje je vrlo jednostavno. Možete se spojiti putem Bluetootha (mobitel, tablet, laptop), USB sticka s glazbom ili putem AUX kabela.</div>
+          <div class="faq__answer-inner">Povezivanje je vrlo jednostavno. Možete se spojiti putem Bluetootha (mobitel,
+            tablet, laptop), USB sticka s glazbom ili putem AUX kabela.</div>
         </div>
       </div>
 
       <div class="faq__item" id="faq-5">
         <button class="faq__question" aria-expanded="false" aria-controls="faq-a-5">
           <span>Što sve dolazi u paketu za najam?</span>
-          <span class="faq__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+          <span class="faq__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <line x1="12" y1="5" x2="12" y2="19" />
+              <line x1="5" y1="12" x2="19" y2="12" />
+            </svg></span>
         </button>
         <div class="faq__answer" id="faq-a-5" role="region">
-          <div class="faq__answer-inner">U paketu dobivate JBL PartyBox 710 zvučnik i strujni kabel potreban za rad. Zvučnik je spreman za korištenje čim ga uključite u struju.</div>
+          <div class="faq__answer-inner">U paketu dobivate JBL PartyBox 710 zvučnik i strujni kabel potreban za rad.
+            Zvučnik je spreman za korištenje čim ga uključite u struju.</div>
         </div>
       </div>
 
       <div class="faq__item" id="faq-6">
         <button class="faq__question" aria-expanded="false" aria-controls="faq-a-6">
           <span>Koliko unaprijed trebam rezervirati termin?</span>
-          <span class="faq__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+          <span class="faq__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <line x1="12" y1="5" x2="12" y2="19" />
+              <line x1="5" y1="12" x2="19" y2="12" />
+            </svg></span>
         </button>
         <div class="faq__answer" id="faq-a-6" role="region">
-          <div class="faq__answer-inner">Upit možete poslati čak i dan ranije, a mi ćemo vam odmah odgovoriti je li zvučnik dostupan. Ipak, preporučujemo da se javite što ranije kako biste bili sigurni da će termin biti slobodan.</div>
+          <div class="faq__answer-inner">Upit možete poslati čak i dan ranije, a mi ćemo vam odmah odgovoriti je li
+            zvučnik dostupan. Ipak, preporučujemo da se javite što ranije kako biste bili sigurni da će termin biti
+            slobodan.</div>
         </div>
       </div>
 
       <div class="faq__item" id="faq-7">
         <button class="faq__question" aria-expanded="false" aria-controls="faq-a-7">
           <span>Što u slučaju oštećenja zvučnika?</span>
-          <span class="faq__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+          <span class="faq__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <line x1="12" y1="5" x2="12" y2="19" />
+              <line x1="5" y1="12" x2="19" y2="12" />
+            </svg></span>
         </button>
         <div class="faq__answer" id="faq-a-7" role="region">
-          <div class="faq__answer-inner">Kupac je odgovoran za uređaj tijekom cijelog vremena najma. U slučaju većih kvarova ili fizičkih oštećenja uzrokovanih nepažnjom, najmoprimac snosi trošak popravka. U slučaju potpunog uništenja ili otuđenja zvučnika, kupac je dužan nadoknaditi punu tržišnu vrijednost novog uređaja.</div>
+          <div class="faq__answer-inner">Kupac je odgovoran za uređaj tijekom cijelog vremena najma. U slučaju većih
+            kvarova ili fizičkih oštećenja uzrokovanih nepažnjom, najmoprimac snosi trošak popravka. U slučaju potpunog
+            uništenja ili otuđenja zvučnika, kupac je dužan nadoknaditi punu tržišnu vrijednost novog uređaja.</div>
         </div>
       </div>
 
@@ -151,7 +215,11 @@
   <div class="modal-overlay" id="modalOverlay">
     <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
       <button class="modal__close" id="modalClose" aria-label="Zatvori">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+          stroke-linejoin="round">
+          <line x1="18" y1="6" x2="6" y2="18" />
+          <line x1="6" y1="6" x2="18" y2="18" />
+        </svg>
       </button>
       <h3 class="modal__title" id="modalTitle">Rezerviraj zvučnik</h3>
       <p class="modal__desc">Popunite podatke i javit ćemo vam se u najkraćem roku.</p>
@@ -180,7 +248,11 @@
       </form>
 
       <div class="form__success" id="formSuccess">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+          stroke-linejoin="round">
+          <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
+          <polyline points="22 4 12 14.01 9 11.01" />
+        </svg>
         <p>Hvala! Rezervacija je zabilježena, javljamo se odmah.</p>
       </div>
     </div>
@@ -188,4 +260,5 @@
 
   <script src="app.js"></script>
 </body>
+
 </html>
