@@ -72,11 +72,11 @@
       if (frameIndex !== currentFrame) {
         drawFrame(frameIndex);
 
-        // --- English Comment: Cache UI elements for the scroll animation features ---
+        // ---  Cache UI elements for the scroll animation features ---
         const scrollGuide = document.getElementById('scroll-guide');
         const dynamicText = document.getElementById('dynamic-text');
 
-        // --- English Comment: Update scroll guide visibility based on interaction ---
+        // ---  Update scroll guide visibility based on interaction ---
         // Hide the guide ("Povuci da istražiš") after user scrolls past the 5th frame
         if (frameIndex > 5) {
           scrollGuide.style.opacity = '0';
@@ -84,24 +84,24 @@
           scrollGuide.style.opacity = '1';
         }
 
-        // --- English Comment: Manage dynamic text transitions based on specific frames ---
+        // ---  Manage dynamic text transitions based on specific frames ---
         // Display different messages at specific points in the 84-frame animation
         if (frameIndex > 10 && frameIndex < 30) {
           dynamicText.innerText = "Kristalan Zvuk";
           dynamicText.style.opacity = "1";
-          dynamicText.style.transform = "translateX(0)";
+          dynamicText.style.transform = "translateY(0)";
         } else if (frameIndex > 40 && frameIndex < 60) {
           dynamicText.innerText = "Moćan Bass";
           dynamicText.style.opacity = "1";
-          dynamicText.style.transform = "translateX(0)";
+          dynamicText.style.transform = "translateY(0)";
         } else if (frameIndex > 70 && frameIndex < 83) {
           dynamicText.innerText = "Spreman za party?";
           dynamicText.style.opacity = "1";
-          dynamicText.style.transform = "translateX(0)";
+          dynamicText.style.transform = "translateY(0)";
         } else {
           // --- English Comment: Hide text when outside frame ranges ---
           dynamicText.style.opacity = "0";
-          dynamicText.style.transform = "translateX(-50px)";
+          dynamicText.style.transform = "translateY(20px)";
         }
       }
       ticking = false;
