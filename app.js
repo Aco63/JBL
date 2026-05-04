@@ -77,11 +77,13 @@
         const dynamicText = document.getElementById('dynamic-text');
 
         // ---  Update scroll guide visibility based on interaction ---
-        // Hide the guide ("Povuci da istražiš") after user scrolls past the 5th frame
-        if (frameIndex > 5) {
-          scrollGuide.style.opacity = '0';
-        } else {
+        // Hide the guide ("Istraži") after user scrolls past the 75th frame
+        if (frameIndex < 75) {
           scrollGuide.style.opacity = '1';
+        } else {
+          // Smoothly fade out over the last few frames
+          const finalFade = Math.max(0, 1 - (frameIndex - 75) / 8);
+          scrollGuide.style.opacity = finalFade.toString();
         }
 
         // ---  Manage dynamic text transitions based on specific frames ---
