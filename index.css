@@ -701,7 +701,7 @@ body {
   transition: opacity 0.5s ease;
   pointer-events: none;
   text-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
-  animation: guideBounce 2s infinite ease-in-out;
+  animation: guideBounce 2.5s infinite ease-in-out;
 }
 
 /* Floating animation for the guide */
@@ -710,7 +710,7 @@ body {
   0%,
   100% {
     transform: translateX(-50%) translateY(0);
-    opacity: 0.5;
+    opacity: 0.6;
   }
 
   50% {
@@ -759,8 +759,8 @@ body {
   opacity: 1;
   transition: opacity 0.5s ease;
   pointer-events: none;
-  text-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
-  animation: guideBounce 2s infinite ease-in-out;
+  text-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
+  animation: guideBounce 2.5s infinite ease-in-out;
 }
 
 /* Floating animation for the guide */
@@ -769,7 +769,7 @@ body {
   0%,
   100% {
     transform: translateX(-50%) translateY(0);
-    opacity: 0.5;
+    opacity: 0.6;
   }
 
   50% {
