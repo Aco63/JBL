@@ -76,8 +76,10 @@
       // Hide scroll guide when animation reaches the end
       if (progress >= 1) {
         scrollGuide.style.opacity = '0';
+        scrollGuide.style.animation = 'none'; // Stop CSS keyframes from overriding opacity
       } else {
         scrollGuide.style.opacity = '1';
+        scrollGuide.style.animation = ''; // Restore CSS animation
       }
 
       if (frameIndex !== currentFrame) {
