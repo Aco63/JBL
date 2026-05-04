@@ -58,6 +58,10 @@
     ctx.drawImage(img, dx, dy, dW, dH);
   }
 
+  // ---  Cache UI elements for the scroll animation features ---
+  const scrollGuide = document.getElementById('scroll-guide');
+  const dynamicText = document.getElementById('dynamic-text');
+
   // Scroll-scrub logic
   let ticking = false;
   function onScroll() {
@@ -69,25 +73,17 @@
       const progress = Math.min(Math.max(-rect.top / scrollable, 0), 1);
       const frameIndex = Math.min(Math.floor(progress * FRAME_COUNT), FRAME_COUNT - 1);
 
+      // Hide scroll guide when animation reaches the end
+      if (progress >= 1) {
+        scrollGuide.style.opacity = '0';
+      } else {
+        scrollGuide.style.opacity = '1';
+      }
+
       if (frameIndex !== currentFrame) {
         drawFrame(frameIndex);
 
-        // ---  Cache UI elements for the scroll animation features ---
-        const scrollGuide = document.getElementById('scroll-guide');
-        const dynamicText = document.getElementById('dynamic-text');
-
-        // ---  Update scroll guide visibility based on interaction ---
-        // Hide the guide ("Istraži") after user scrolls past the 75th frame
-        if (frameIndex < 75) {
-          scrollGuide.style.opacity = '1';
-        } else {
-          // Smoothly fade out over the last few frames
-          const finalFade = Math.max(0, 1 - (frameIndex - 75) / 8);
-          scrollGuide.style.opacity = finalFade.toString();
-        }
-
-        // ---  Manage dynamic text transitions based on specific frames ---
-        // Display different messages at specific points in the 84-frame animation
+        // Manage dynamic text transitions based on specific frames
         if (frameIndex > 10 && frameIndex < 30) {
           dynamicText.innerText = "Kristalan Zvuk";
           dynamicText.style.opacity = "1";
@@ -101,7 +97,6 @@
           dynamicText.style.opacity = "1";
           dynamicText.style.transform = "translateX(0)";
         } else {
-          // --- Hide text when outside frame ranges ---
           dynamicText.style.opacity = "0";
           dynamicText.style.transform = "translateX(-50px)";
         }
