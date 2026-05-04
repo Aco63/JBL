@@ -89,19 +89,19 @@
         if (frameIndex > 10 && frameIndex < 30) {
           dynamicText.innerText = "Kristalan Zvuk";
           dynamicText.style.opacity = "1";
-          dynamicText.style.transform = "translateY(0)";
+          dynamicText.style.transform = "translateX(0)";
         } else if (frameIndex > 40 && frameIndex < 60) {
           dynamicText.innerText = "Moćan Bass";
           dynamicText.style.opacity = "1";
-          dynamicText.style.transform = "translateY(0)";
+          dynamicText.style.transform = "translateX(0)";
         } else if (frameIndex > 70 && frameIndex < 83) {
           dynamicText.innerText = "Spreman za party?";
           dynamicText.style.opacity = "1";
-          dynamicText.style.transform = "translateY(0)";
+          dynamicText.style.transform = "translateX(0)";
         } else {
-          // --- English Comment: Hide text when outside frame ranges ---
+          // --- Hide text when outside frame ranges ---
           dynamicText.style.opacity = "0";
-          dynamicText.style.transform = "translateY(20px)";
+          dynamicText.style.transform = "translateX(-50px)";
         }
       }
       ticking = false;
