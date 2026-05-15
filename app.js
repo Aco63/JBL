@@ -109,7 +109,7 @@
   window.addEventListener('scroll', onScroll, { passive: true });
 
   // --- Skip animation on click (Scroll to the last frame) ---
-  // --- Advanced smooth scroll with custom duration ---
+  // --- English Comment: Advanced smooth scroll with constant (linear) speed ---
   const scrollGuideElement = document.getElementById('scroll-guide');
 
   scrollGuideElement.addEventListener('click', () => {
@@ -119,28 +119,22 @@
     const startPosition = window.scrollY;
     const distance = targetScrollPosition - startPosition;
 
-    // Ovdje kontroliraš brzinu! (1500 milisekundi = 1.5 sekundi trajanja)
-    // Ako želiš još sporije, povećaj na 2000 ili više.
-    const duration = 1500;
+    // Ovdje postavljaš ukupno vrijeme putovanja u milisekundama.
+    // Budući da nema kočenja, 1200ms (1.2 sekunde) je obično zlatna sredina za linearni pokret.
+    const duration = 1200;
     let startTimestamp = null;
 
     function customScrollStep(timestamp) {
       if (!startTimestamp) startTimestamp = timestamp;
       const elapsed = timestamp - startTimestamp;
 
-      // Izračun weba za napredak (od 0 do 1)
+      // Napredak raste potpuno ravnomjerno od 0 do 1
       const progress = Math.min(elapsed / duration, 1);
 
-      // "Ease-In-Out" matematika: omogućuje da skrolanje krene nježno, 
-      // ubrza u sredini i uspori pred sam kraj (izgleda prirodnije)
-      const ease = progress < 0.5
-        ? 2 * progress * progress
-        : -1 + (4 - 2 * progress) * progress;
+      // LINEARNI POKRET: progress koristimo izravno, pa je brzina konstantna cijelim putem
+      window.scrollTo(0, startPosition + distance * progress);
 
-      // Izvrši skok na izračunatu točku
-      window.scrollTo(0, startPosition + distance * ease);
-
-      // Ako vrijeme još nije isteklo, nastavi animaciju u idućem frejmu
+      // Nastavi animaciju dok ne istekne zadano vrijeme
       if (elapsed < duration) {
         window.requestAnimationFrame(customScrollStep);
       }
