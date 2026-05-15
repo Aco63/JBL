@@ -108,45 +108,28 @@
   }
   window.addEventListener('scroll', onScroll, { passive: true });
 
-  // --- English Comment: Bug-free constant speed scroll directly to pricing ---
+  // --- Constant speed scroll directly to pricing ---
   const scrollGuideElement = document.getElementById('scroll-guide');
-
-  // Provjeri zove li ti se sekcija s cjenikom u HTML-u točno id="cjenik"
-  const cjenikSection = document.getElementById('cjenik');
-
+  const pricingSection = document.getElementById('pricing');
   scrollGuideElement.addEventListener('click', () => {
-    // 1. Privremeno gasimo CSS smooth scroll da ne zaključa preglednik i ne uzrokuje freeze
     const originalScrollBehavior = document.documentElement.style.scrollBehavior;
     document.documentElement.style.scrollBehavior = 'auto';
-
-    // Ciljamo točnu poziciju cjenika. Ako ga ne nađe, ide do kraja hero sekcije.
-    const targetScrollPosition = cjenikSection ? cjenikSection.offsetTop : heroSection.offsetHeight;
+    const targetScrollPosition = pricingSection ? pricingSection.offsetTop : heroSection.offsetHeight;
     const startPosition = window.scrollY;
     const distance = targetScrollPosition - startPosition;
-
-    // Trajanje skrola: 800ms (0.8 sekundi). Pokret je linearan i brz, ali vidljiv.
-    // Ako želiš sporije putovanje zvučnika, povećaj na 1200.
-    const duration = 800;
+    const duration = 1000;
     let startTimestamp = null;
-
     function customScrollStep(timestamp) {
       if (!startTimestamp) startTimestamp = timestamp;
       const elapsed = timestamp - startTimestamp;
       const progress = Math.min(elapsed / duration, 1);
-
-      // Skrolamo ravnomjerno prema dolje.
-      // Svaki put kad se izvrši ova linija, ona će sama okinuti tvoju 'onScroll' 
-      // funkciju koja će savršeno linearno promijeniti sliku zvučnika na ekranu.
       window.scrollTo(0, startPosition + distance * progress);
-
       if (elapsed < duration) {
         window.requestAnimationFrame(customScrollStep);
       } else {
-        // 2. Kada stignemo na cjenik, vraćamo CSS postavke na staro
         document.documentElement.style.scrollBehavior = originalScrollBehavior;
       }
     }
-
     window.requestAnimationFrame(customScrollStep);
   });
 
