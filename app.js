@@ -109,14 +109,44 @@
   window.addEventListener('scroll', onScroll, { passive: true });
 
   // --- Skip animation on click (Scroll to the last frame) ---
+  // --- Advanced smooth scroll with custom duration ---
   const scrollGuideElement = document.getElementById('scroll-guide');
+
   scrollGuideElement.addEventListener('click', () => {
     const scrollableDistance = heroSection.offsetHeight - window.innerHeight;
     const targetScrollPosition = heroSection.offsetTop + scrollableDistance;
-    window.scrollTo({
-      top: targetScrollPosition,
-      behavior: 'smooth'
-    });
+
+    const startPosition = window.scrollY;
+    const distance = targetScrollPosition - startPosition;
+
+    // Ovdje kontroliraš brzinu! (1500 milisekundi = 1.5 sekundi trajanja)
+    // Ako želiš još sporije, povećaj na 2000 ili više.
+    const duration = 1500;
+    let startTimestamp = null;
+
+    function customScrollStep(timestamp) {
+      if (!startTimestamp) startTimestamp = timestamp;
+      const elapsed = timestamp - startTimestamp;
+
+      // Izračun weba za napredak (od 0 do 1)
+      const progress = Math.min(elapsed / duration, 1);
+
+      // "Ease-In-Out" matematika: omogućuje da skrolanje krene nježno, 
+      // ubrza u sredini i uspori pred sam kraj (izgleda prirodnije)
+      const ease = progress < 0.5
+        ? 2 * progress * progress
+        : -1 + (4 - 2 * progress) * progress;
+
+      // Izvrši skok na izračunatu točku
+      window.scrollTo(0, startPosition + distance * ease);
+
+      // Ako vrijeme još nije isteklo, nastavi animaciju u idućem frejmu
+      if (elapsed < duration) {
+        window.requestAnimationFrame(customScrollStep);
+      }
+    }
+
+    window.requestAnimationFrame(customScrollStep);
   });
 
   // ─── Header Scroll Effect ────────────────────────────────
