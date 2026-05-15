@@ -701,65 +701,6 @@ body {
   transition: opacity 0.5s ease;
   pointer-events: auto;
   cursor: pointer;
-  text-shadow: 0 0 15px rgba(255, 0, 110, 0.5);
-  animation: guideBounce 2.5s infinite ease-in-out;
-}
-
-/* Floating animation for the guide */
-@keyframes guideBounce {
-
-  0%,
-  100% {
-    transform: translateX(-50%) translateY(0);
-    opacity: 0.6;
-  }
-
-  50% {
-    transform: translateX(-50%) translateY(-10px);
-    opacity: 1;
-  }
-}
-
-/* --- DYNAMIC FEATURE TEXT (Triggered by scroll/frame index) --- */
-.feature-text {
-  position: fixed;
-  top: 50%;
-  left: 8%;
-  transform: translate(-50%, -50%);
-  z-index: 90;
-  pointer-events: none;
-  width: 95%;
-  text-align: center;
-}
-
-#dynamic-text {
-  color: #ffffff;
-  font-size: clamp(2.5rem, 12vw, 7rem);
-  font-weight: 900;
-  line-height: 1;
-  text-transform: uppercase;
-  margin: 0 auto;
-  opacity: 0;
-  transform: translateY(20px);
-  transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-  text-shadow: 0 10px 50px rgba(0, 0, 0, 0.9);
-}
-
-/* --- SCROLL GUIDE (Visual prompt for user interaction) --- */
-.scroll-guide {
-  position: fixed;
-  bottom: 40px;
-  left: 50%;
-  transform: translateX(-50%);
-  color: #ffffff;
-  font-size: 0.85rem;
-  font-weight: 600;
-  letter-spacing: 3px;
-  text-transform: uppercase;
-  z-index: 100;
-  opacity: 1;
-  transition: opacity 0.5s ease;
-  pointer-events: none;
   text-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
   animation: guideBounce 2.5s infinite ease-in-out;
 }
