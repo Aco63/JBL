@@ -109,34 +109,53 @@
   window.addEventListener('scroll', onScroll, { passive: true });
 
   // --- Skip animation on click (Scroll to the last frame) ---
-  // --- English Comment: Advanced smooth scroll with constant (linear) speed ---
+  // --- English Comment: Bug-free constant speed scroll directly to pricing ---
   const scrollGuideElement = document.getElementById('scroll-guide');
 
+  // Pretpostavljamo da ti se sekcija ispod zove 'cjenik'. Ako ima drugi ID, promijeni ga ovdje.
+  const pricingSection = document.getElementById('pricing') || document.querySelector('.pricing');
+
   scrollGuideElement.addEventListener('click', () => {
-    const scrollableDistance = heroSection.offsetHeight - window.innerHeight;
-    const targetScrollPosition = heroSection.offsetTop + scrollableDistance;
+    // Cilj je vrh sekcije s cjenikom
+    const targetScrollPosition = pricingSection ? pricingSection.offsetTop : heroSection.offsetHeight;
 
     const startPosition = window.scrollY;
     const distance = targetScrollPosition - startPosition;
 
-    // Ovdje postavljaš ukupno vrijeme putovanja u milisekundama.
-    // Budući da nema kočenja, 1200ms (1.2 sekunde) je obično zlatna sredina za linearni pokret.
-    const duration = 1200;
+    // Trajanje skrola (1000ms = 1 sekunda). Prilagodi po želji.
+    const duration = 1000;
     let startTimestamp = null;
+
+    // Ovdje privremeno isključujemo tvoj standardni onScroll event kako ne bi smetao
+    window.removeEventListener('scroll', onScroll);
 
     function customScrollStep(timestamp) {
       if (!startTimestamp) startTimestamp = timestamp;
       const elapsed = timestamp - startTimestamp;
-
-      // Napredak raste potpuno ravnomjerno od 0 do 1
       const progress = Math.min(elapsed / duration, 1);
 
-      // LINEARNI POKRET: progress koristimo izravno, pa je brzina konstantna cijelim putem
+      // 1. Ravnomjerno skrolaj stranicu dolje
       window.scrollTo(0, startPosition + distance * progress);
 
-      // Nastavi animaciju dok ne istekne zadano vrijeme
+      // 2. SAVRŠENO GLATKO VRTI FREJMOVE (Bypasamo buggy scroll event)
+      // Računamo točan frejm na temelju vremena (progress ide od 0 do 1)
+      const currentFrame = Math.floor(progress * 83);
+
+      // PAŽNJA: Ovdje pozivamo tvoju logiku za promjenu slike!
+      if (typeof updateImage === 'function') {
+        updateImage(currentFrame);
+      } else if (typeof setFrame === 'function') {
+        setFrame(currentFrame);
+      } else {
+        // Ako nemaš odvojenu funkciju, ovdje ručno mijenjamo sliku (prilagodi svom kodu):
+        // imgElement.src = images[currentFrame];
+      }
+
       if (elapsed < duration) {
         window.requestAnimationFrame(customScrollStep);
+      } else {
+        // Kada skrolanje završi, ponovno palimo normalan onScroll event za korisnika
+        window.addEventListener('scroll', onScroll);
       }
     }
 
