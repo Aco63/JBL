@@ -108,6 +108,17 @@
   }
   window.addEventListener('scroll', onScroll, { passive: true });
 
+  // --- Skip animation on click (Scroll to the last frame) ---
+  const scrollGuideElement = document.getElementById('scroll-guide');
+  scrollGuideElement.addEventListener('click', () => {
+    const scrollableDistance = heroSection.offsetHeight - window.innerHeight;
+    const targetScrollPosition = heroSection.offsetTop + scrollableDistance;
+    window.scrollTo({
+      top: targetScrollPosition,
+      behavior: 'smooth'
+    });
+  });
+
   // ─── Header Scroll Effect ────────────────────────────────
   const header = document.getElementById('header');
   function updateHeader() {

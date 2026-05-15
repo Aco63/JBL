@@ -699,7 +699,8 @@ body {
   z-index: 100;
   opacity: 1;
   transition: opacity 0.5s ease;
-  pointer-events: none;
+  pointer-events: auto;
+  cursor: pointer;
   text-shadow: 0 0 15px rgba(255, 0, 110, 0.5);
   animation: guideBounce 2.5s infinite ease-in-out;
 }
