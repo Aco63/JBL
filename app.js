@@ -108,54 +108,42 @@
   }
   window.addEventListener('scroll', onScroll, { passive: true });
 
-  // --- Skip animation on click (Scroll to the last frame) ---
   // --- English Comment: Bug-free constant speed scroll directly to pricing ---
   const scrollGuideElement = document.getElementById('scroll-guide');
 
-  // Pretpostavljamo da ti se sekcija ispod zove 'cjenik'. Ako ima drugi ID, promijeni ga ovdje.
-  const pricingSection = document.getElementById('pricing') || document.querySelector('.pricing');
+  // Provjeri zove li ti se sekcija s cjenikom u HTML-u točno id="cjenik"
+  const cjenikSection = document.getElementById('cjenik');
 
   scrollGuideElement.addEventListener('click', () => {
-    // Cilj je vrh sekcije s cjenikom
-    const targetScrollPosition = pricingSection ? pricingSection.offsetTop : heroSection.offsetHeight;
+    // 1. Privremeno gasimo CSS smooth scroll da ne zaključa preglednik i ne uzrokuje freeze
+    const originalScrollBehavior = document.documentElement.style.scrollBehavior;
+    document.documentElement.style.scrollBehavior = 'auto';
 
+    // Ciljamo točnu poziciju cjenika. Ako ga ne nađe, ide do kraja hero sekcije.
+    const targetScrollPosition = cjenikSection ? cjenikSection.offsetTop : heroSection.offsetHeight;
     const startPosition = window.scrollY;
     const distance = targetScrollPosition - startPosition;
 
-    // Trajanje skrola (1000ms = 1 sekunda). Prilagodi po želji.
-    const duration = 1000;
+    // Trajanje skrola: 800ms (0.8 sekundi). Pokret je linearan i brz, ali vidljiv.
+    // Ako želiš sporije putovanje zvučnika, povećaj na 1200.
+    const duration = 800;
     let startTimestamp = null;
-
-    // Ovdje privremeno isključujemo tvoj standardni onScroll event kako ne bi smetao
-    window.removeEventListener('scroll', onScroll);
 
     function customScrollStep(timestamp) {
       if (!startTimestamp) startTimestamp = timestamp;
       const elapsed = timestamp - startTimestamp;
       const progress = Math.min(elapsed / duration, 1);
 
-      // 1. Ravnomjerno skrolaj stranicu dolje
+      // Skrolamo ravnomjerno prema dolje.
+      // Svaki put kad se izvrši ova linija, ona će sama okinuti tvoju 'onScroll' 
+      // funkciju koja će savršeno linearno promijeniti sliku zvučnika na ekranu.
       window.scrollTo(0, startPosition + distance * progress);
-
-      // 2. SAVRŠENO GLATKO VRTI FREJMOVE (Bypasamo buggy scroll event)
-      // Računamo točan frejm na temelju vremena (progress ide od 0 do 1)
-      const currentFrame = Math.floor(progress * 83);
-
-      // PAŽNJA: Ovdje pozivamo tvoju logiku za promjenu slike!
-      if (typeof updateImage === 'function') {
-        updateImage(currentFrame);
-      } else if (typeof setFrame === 'function') {
-        setFrame(currentFrame);
-      } else {
-        // Ako nemaš odvojenu funkciju, ovdje ručno mijenjamo sliku (prilagodi svom kodu):
-        // imgElement.src = images[currentFrame];
-      }
 
       if (elapsed < duration) {
         window.requestAnimationFrame(customScrollStep);
       } else {
-        // Kada skrolanje završi, ponovno palimo normalan onScroll event za korisnika
-        window.addEventListener('scroll', onScroll);
+        // 2. Kada stignemo na cjenik, vraćamo CSS postavke na staro
+        document.documentElement.style.scrollBehavior = originalScrollBehavior;
       }
     }
 
