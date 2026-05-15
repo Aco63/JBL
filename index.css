@@ -79,9 +79,16 @@ body {
   text-shadow: var(--glow-sm)
 }
 
+.header__actions {
+  display: flex;
+  align-items: center;
+  gap: 12px
+}
+
 .header__cta {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 8px;
   padding: 10px 24px;
   background: var(--purple);
@@ -92,9 +99,18 @@ body {
   font-size: 0.875rem;
   font-weight: 600;
   cursor: pointer;
+  text-decoration: none;
   transition: all var(--transition);
   box-shadow: var(--glow-md);
   overflow: hidden
+}
+
+.header__cta--icon {
+  width: 42px;
+  height: 42px;
+  padding: 0;
+  border-radius: 50%;
+  flex-shrink: 0
 }
 
 .header__cta:hover {
