@@ -265,7 +265,15 @@
           <label class="form__label" for="date">Datum najma</label>
           <input class="form__input" type="date" id="date" name="date" required>
         </div>
-        <button class="form__submit" type="submit" id="submitBtn">
+        <script>
+          function gtag_report_conversion() {
+            gtag('event', 'conversion', {
+              'send_to': 'AW-18214443275/8h4mCPOuwMEcEIuyqe1D'
+            });
+          }
+        </script>
+
+        <button class="form__submit" type="submit" id="submitBtn" onclick="gtag_report_conversion()">
           <span class="btn-label">Pošalji rezervaciju</span>
           <span class="spinner"></span>
         </button>
