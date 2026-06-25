@@ -25,15 +25,27 @@
     drawFrame(currentFrame < 0 ? 0 : currentFrame);
   });
 
+  // Helper to calculate which frame should be active based on scroll position
+  function getTargetFrame() {
+    const rect = heroSection.getBoundingClientRect();
+    const scrollable = heroSection.offsetHeight - window.innerHeight;
+    if (scrollable <= 0) return 0;
+    const progress = Math.min(Math.max(-rect.top / scrollable, 0), 1);
+    return Math.min(Math.floor(progress * FRAME_COUNT), FRAME_COUNT - 1);
+  }
+
   // Load all frames
   for (let i = 0; i < FRAME_COUNT; i++) {
     const img = new Image();
-    img.src = `frames/frame_${i}.webp`;
+    images[i] = img;
     img.onload = () => {
       loadedCount++;
-      if (loadedCount === 1) drawFrame(0); // show first frame ASAP
+      // Render immediately if this image matches the frame we want to display right now
+      if (i === getTargetFrame()) {
+        drawFrame(i);
+      }
     };
-    images[i] = img;
+    img.src = `frames/frame_${i}.webp`;
   }
 
   function drawFrame(index) {
@@ -68,10 +80,10 @@
     if (ticking) return;
     ticking = true;
     requestAnimationFrame(() => {
+      const frameIndex = getTargetFrame();
       const rect = heroSection.getBoundingClientRect();
       const scrollable = heroSection.offsetHeight - window.innerHeight;
       const progress = Math.min(Math.max(-rect.top / scrollable, 0), 1);
-      const frameIndex = Math.min(Math.floor(progress * FRAME_COUNT), FRAME_COUNT - 1);
 
       // Hide scroll guide when animation reaches the end
       if (progress >= 1) {
