@@ -168,6 +168,8 @@
   const form = document.getElementById('reservationForm');
   const formSuccess = document.getElementById('formSuccess');
   const submitBtn = document.getElementById('submitBtn');
+  const modalTitle = document.getElementById('modalTitle');
+  const modalDesc = document.querySelector('.modal__desc');
 
   function openModal() {
     overlay.classList.add('active');
@@ -229,12 +231,16 @@
     // Show success
     submitBtn.classList.remove('loading');
     form.classList.add('hidden');
+    modalTitle.style.display = 'none';
+    modalDesc.style.display = 'none';
     formSuccess.classList.add('show');
 
     // Reset after closing
     setTimeout(() => {
       form.reset();
       form.classList.remove('hidden');
+      modalTitle.style.display = '';
+      modalDesc.style.display = '';
       formSuccess.classList.remove('show');
       submitBtn.disabled = false;
     }, 4000);
