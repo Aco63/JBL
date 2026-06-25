@@ -656,8 +656,15 @@ body {
   filter: drop-shadow(var(--glow-sm))
 }
 
-.form__success p {
-  font-size: 1rem;
+.form__success-title {
+  font-size: 1.4rem;
+  font-weight: 800;
+  color: var(--text);
+  letter-spacing: -0.3px
+}
+
+.form__success-msg {
+  font-size: 0.95rem;
   color: var(--text-dim);
   line-height: 1.6
 }
